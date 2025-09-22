@@ -1,9 +1,9 @@
 // BuffaloCoin - One-page Next.js (pages/index.jsx)
-// Usage notes:
-// 1) Save this file as `pages/index.jsx` in a Next.js app (pages router).
-// 2) Put your logo image at `/public/logo.png` (your uploaded file). Replace paths as needed.
-// 3) Ensure Tailwind CSS is configured. This uses only Tailwind classes (no extra deps).
-// 4) Edit the TOKEN constants below (CONTRACT_ADDRESS, TOTAL_SUPPLY, etc.).
+// DARK / WILD WEST redesign — earthy palette, rugged typography, lore-forward.
+// Usage:
+// 1) Save as `pages/index.jsx` in a Next.js app (pages router).
+// 2) Place your logo at /public/logo.png. Replace TOKEN constants below.
+// 3) Tailwind should be configured (tailwind.config.js present). This file uses plain Tailwind classes.
 
 import Head from 'next/head';
 import Image from 'next/image';
@@ -16,79 +16,85 @@ const TOKEN = {
   contractAddress: '0xYOUR_CONTRACT_ADDRESS',
 };
 
-export default function Home() {
+export default function Home(){
   return (
     <>
       <Head>
         <title>{TOKEN.name} — {TOKEN.ticker}</title>
-        <meta name="description" content="BuffaloCoin (BUFFALO) — memecoin inspired by the American buffalo: strength, pride, and community." />
-        <meta property="og:title" content={`${TOKEN.name} — ${TOKEN.ticker}`} />
-        <meta property="og:description" content="BuffaloCoin: a memecoin with lore, community, and the spirit of the plains." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="BuffaloCoin — memecoin with a wild west soul. Strength, pride, and absurd humor from the plains." />
+        {/* Optional: include a rugged display font via Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
       </Head>
 
-      <main className="min-h-screen bg-gradient-to-b from-amber-50 via-amber-100 to-white text-slate-900 antialiased">
-        <header className="backdrop-blur-sm sticky top-0 z-50 bg-white/70">
+      <main className="min-h-screen bg-gradient-to-b from-slate-900 via-amber-900 to-slate-800 text-amber-50 antialiased font-sans">
+        {/* Top bar */}
+        <header className="sticky top-0 z-50 bg-slate-900/70 backdrop-blur-sm border-b border-slate-800">
           <div className="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" className="flex items-center gap-3">
-              <div className="w-12 h-12 relative rounded-full overflow-hidden ring-2 ring-amber-400">
-                {/* Place your logo at public/logo.png */}
-                <Image src="/logo.png" alt="BuffaloCoin logo" fill sizes="(max-width: 640px) 48px, 96px" style={{objectFit:'cover'}} />
+              <div className="w-14 h-14 relative rounded-full overflow-hidden ring-2 ring-amber-700">
+                <Image src="/logo.png" alt="BuffaloCoin logo" fill style={{objectFit:'cover'}} sizes="56px"/>
               </div>
               <div>
-                <div className="font-extrabold text-lg tracking-tight">{TOKEN.name}</div>
-                <div className="text-xs text-slate-600 uppercase">Ticker: <span className="font-bold">{TOKEN.ticker}</span></div>
+                <div className="font-extrabold text-lg tracking-tight" style={{fontFamily:'Roboto Slab, serif'}}>{TOKEN.name}</div>
+                <div className="text-xs text-amber-300 uppercase">{TOKEN.ticker} — The Herd Token</div>
               </div>
             </a>
 
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
-              <a href="#about" className="hover:text-amber-700">About</a>
-              <a href="#tokenomics" className="hover:text-amber-700">Tokenomics</a>
-              <a href="#roadmap" className="hover:text-amber-700">Roadmap</a>
-              <a href="#community" className="hover:text-amber-700">Community</a>
-              <a href="#buy" className="bg-amber-500 text-white px-3 py-2 rounded-md shadow hover:bg-amber-600">Buy</a>
+            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-amber-200">
+              <a href="#lore" className="hover:text-white">Lore</a>
+              <a href="#tokenomics" className="hover:text-white">Tokenomics</a>
+              <a href="#stunts" className="hover:text-white">Stunts</a>
+              <a href="#buy" className="bg-amber-700 text-slate-900 px-3 py-2 rounded-md shadow">Join Herd</a>
             </nav>
 
             <div className="md:hidden">
-              <a href="#buy" className="bg-amber-500 text-white px-3 py-2 rounded-md shadow">Buy</a>
+              <a href="#buy" className="bg-amber-700 text-slate-900 px-3 py-2 rounded-md shadow">Join Herd</a>
             </div>
           </div>
         </header>
 
-        <section id="home" className="container mx-auto px-6 py-16 md:py-28">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-amber-900">BuffaloCoin <span className="text-slate-700">{TOKEN.ticker}</span></h1>
-              <p className="mt-4 text-lg text-slate-700">Born from the plains — a memecoin celebrating resilience, heritage, and the raw memetic power of the American buffalo. Community-led. Lore-rich. Built to entertain and unite degens with pride.</p>
+        {/* Hero */}
+        <section id="home" className="container mx-auto px-6 py-20 md:py-28">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="text-left">
+              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight" style={{fontFamily:'Roboto Slab, serif'}}>
+                BuffaloCoin <span className="text-amber-300">{TOKEN.ticker}</span>
+              </h1>
+
+              <p className="mt-6 text-amber-200 max-w-lg">A memecoin forged from plains dust and stubborn horns. Think wild west banners, absurd lore, and hard-headed community stunts. Not financial advice — just very committed memetics.</p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#buy" className="inline-flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg shadow hover:opacity-95">Buy BUFFALO</a>
-                <a href="#tokenomics" className="inline-flex items-center gap-2 border border-amber-300 px-4 py-2 rounded-lg">Tokenomics</a>
-                <a href="#roadmap" className="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-lg">Roadmap</a>
+                <a href="#buy" className="inline-flex items-center gap-2 bg-amber-500 text-slate-900 px-4 py-2 rounded-lg shadow">Buy BUFFALO</a>
+                <a href="#lore" className="inline-flex items-center gap-2 border border-amber-700 px-4 py-2 rounded-lg">Read Lore</a>
+                <a href="#stunts" className="inline-flex items-center gap-2 border border-slate-700 px-4 py-2 rounded-lg">Stunts & Drops</a>
               </div>
 
-              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                <Stat label="Ticker" value={TOKEN.ticker} />
-                <Stat label="Supply" value={TOKEN.totalSupply} />
-                <Stat label="Network" value={TOKEN.network} />
-                <Stat label="Contract" value={shorten(TOKEN.contractAddress)} />
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <SmallStat label="Ticker" value={TOKEN.ticker} />
+                <SmallStat label="Supply" value={TOKEN.totalSupply} />
+                <SmallStat label="Network" value={TOKEN.network} />
+                <SmallStat label="Contract" value={shorten(TOKEN.contractAddress)} />
               </div>
 
-              <div className="mt-8 text-sm text-slate-600">Pro tip: Connect your wallet and check the official swap link in the footer. Beware of imposters — only buy from verified sources.</div>
+              <div className="mt-6 text-sm text-amber-300 max-w-md">Heads up: BuffaloCoin is community-first. We plan transparent liquidity beats, public dev-share usage, and ritualistic meme drops (prizes included). Watch socials for the "Herd Hunt" events.</div>
             </div>
 
             <div className="flex justify-center md:justify-end">
-              <div className="w-full max-w-md bg-white/80 rounded-2xl p-6 shadow-lg ring-1 ring-amber-100">
-                <div className="relative w-full h-64 md:h-80">
+              <div className="w-full max-w-md bg-gradient-to-br from-slate-800 to-amber-900/10 rounded-2xl p-6 shadow-xl ring-1 ring-slate-700">
+                <div className="relative w-full h-72 md:h-80 rounded-lg overflow-hidden bg-slate-800/60">
                   <Image src="/logo.png" alt="Buffalo logo" fill style={{objectFit:'contain'}} sizes="(max-width: 768px) 300px, 400px"/>
                 </div>
 
                 <div className="mt-6">
-                  <h3 className="text-lg font-bold">Join the Herd</h3>
-                  <p className="mt-2 text-sm text-slate-600">BuffaloCoin is a community-first memecoin. Stories, lore, merch drops, and wild social stunts coming — ride with us.</p>
+                  <h3 className="text-lg font-bold text-amber-100">The Herd</h3>
+                  <p className="mt-2 text-sm text-amber-200">Join a playful community that honors the buffalo: tough, lumbering, and impossible to ignore. Expect memes, merch, and IRL stunts that make people laugh and scratch their heads.</p>
 
                   <div className="mt-4 flex gap-3">
                     <a href="#community" className="text-sm px-3 py-2 border rounded-md">Discord</a>
-                    <a href="#community" className="text-sm px-3 py-2 border rounded-md">Twitter</a>
+                    <a href="#community" className="text-sm px-3 py-2 border rounded-md">X</a>
                     <a href="#community" className="text-sm px-3 py-2 border rounded-md">Telegram</a>
                   </div>
                 </div>
@@ -97,97 +103,117 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="container mx-auto px-6 py-12 bg-amber-50">
-          <div className="max-w-4xl mx-auto prose prose-slate">
-            <h2>About the Buffalo</h2>
-            <p>
-              The American buffalo (bison) has been a symbol of strength, abundance, and survival through centuries. From the Great Plains to proud emblems across badges and seals, the buffalo endured hardship and became a cultural icon.
-            </p>
-            <p>
-              BuffaloCoin turns that spirit into memetic currency: a tongue-in-cheek homage to resilience, community rituals, and the grand spectacle of internet culture. Expect lore drops, wild art, and collaborative stunts that lean into American frontier motifs without taking ourselves too seriously.
-            </p>
-          </div>
-        </section>
-
-        <section id="tokenomics" className="container mx-auto px-6 py-12">
+        {/* Lore - Wild West style + humor */}
+        <section id="lore" className="container mx-auto px-6 py-12 bg-slate-900/40 border-t border-slate-800">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-start">
-            <div className="bg-white p-6 rounded-xl shadow">
-              <h3 className="font-bold text-xl">Tokenomics</h3>
-              <ul className="mt-4 space-y-3 text-slate-700">
-                <li><strong>Supply:</strong> {TOKEN.totalSupply}</li>
-                <li><strong>Ticker:</strong> {TOKEN.ticker}</li>
-                <li><strong>Dev Reward:</strong> 2% (example — editable)</li>
-                <li><strong>Liquidity Lock:</strong> Target 6 months (community vote)</li>
-                <li><strong>Use of Dev Reward:</strong> Marketing, community funds, charity drops.</li>
-              </ul>
+            <div>
+              <h2 className="text-3xl font-bold" style={{fontFamily:'Roboto Slab, serif'}}>Lore: Horns, Dust, and Ledger Tales</h2>
+              <p className="mt-4 text-amber-200">Long ago, on digital plains where pumps roam free, a legendary bison stomped the order book and left a hoof print on the blockchain. That hoof print became BuffaloCoin — equal parts frontier bravado and ridiculous meme theater.</p>
+
+              <p className="mt-3 text-amber-200">We honor buffalo history: their survival against extinction, their role in indigenous cultures, and their image stamped on tokens of pride. We poke fun at ourselves, throw wild stunts, and keep dev rewards transparent.</p>
+
+              <div className="mt-6 space-y-3 text-amber-300">
+                <div className="font-semibold">Rituals</div>
+                <ul className="list-disc pl-5">
+                  <li>Herd Hunt — social treasure hunts with token prizes.</li>
+                  <li>Buffalo Roast — weekly AMA where bad puns are mandatory.</li>
+                  <li>Horn Drop — surprise art/meme airdrops for holders.</li>
+                </ul>
+              </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow">
-              <h3 className="font-bold text-xl">Security & Verification</h3>
-              <p className="mt-2 text-slate-700">Important: Always verify the contract address. Look for project verification badges on major venues and the official GitHub repository. We plan to publish audits and liquidity proofs as the project grows.</p>
+            <div className="bg-slate-800 p-6 rounded-xl shadow-inner">
+              <h4 className="font-bold text-amber-300">Design notes</h4>
+              <p className="mt-2 text-amber-200 text-sm">Palette inspired by your logo: deep golds for accents, dark brown/espresso for backgrounds, dusty amber highlights. Use gritty paper textures, western wood grain patterns, and tough serif headings for the wild west feel.</p>
 
               <div className="mt-4">
-                <a href="#" className="inline-block px-4 py-2 border rounded-md">View Contract</a>
-                <a href="#" className="inline-block ml-3 px-4 py-2 bg-amber-600 text-white rounded-md">Audit Plans</a>
+                <div className="font-semibold text-amber-200">Hero / Banner prompt</div>
+                <div className="mt-2 text-sm text-amber-300">"Create a 1500×500 wide hero banner: cinematic buffalo portrait in dark brown tones on a dusty golden field, cinematic west lighting, aged paper texture overlay, subtle gold rim circling the buffalo, typography space on left for logo and bold title. Style: gritty western poster, high detail, 4K."</div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="roadmap" className="container mx-auto px-6 py-12 bg-amber-50">
-          <div className="max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold">Roadmap</h3>
-            <ol className="mt-6 space-y-4">
-              <RoadItem step="Phase 1" title="Launch & Herd-Building" desc="Token launch, socials, initial liquidity, meme competitions."/>
-              <RoadItem step="Phase 2" title="Verification & Trust" desc="Get verified on major platforms, publish audit summary, community transparency."/>
-              <RoadItem step="Phase 3" title="Lore & Drops" desc="Art drops, merch collabs, Buffalo lore events and IRL stunts."/>
-              <RoadItem step="Phase 4" title="Sustainable Growth" desc="DAO voting on treasury, grants, and charitable buffalo-conservation drops."/>
-            </ol>
+        {/* Tokenomics */}
+        <section id="tokenomics" className="container mx-auto px-6 py-12">
+          <div className="max-w-4xl mx-auto bg-slate-800/60 p-6 rounded-xl shadow-md border border-slate-700">
+            <h3 className="text-2xl font-bold text-amber-100">Tokenomics</h3>
+            <div className="mt-4 grid md:grid-cols-2 gap-6">
+              <div className="space-y-3 text-amber-200">
+                <div><strong>Supply:</strong> {TOKEN.totalSupply}</div>
+                <div><strong>Dev Reward:</strong> 2% (configurable)</div>
+                <div><strong>Liquidity Lock:</strong> Target 6 months (snapshot & proof to be published)</div>
+                <div><strong>Burn Mechanic:</strong> Optional community proposals for ritual burns.</div>
+              </div>
+
+              <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                <div className="font-semibold text-amber-300">Security</div>
+                <p className="text-amber-200 mt-2 text-sm">Plan: publish contract, supply proof, and a simple audit summary. Verify swap links on official socials. We will never ask for private keys.</p>
+              </div>
+            </div>
           </div>
         </section>
 
+        {/* Stunts / Roadmap */}
+        <section id="stunts" className="container mx-auto px-6 py-12 bg-slate-900/30 border-t border-slate-800">
+          <div className="max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold text-amber-100">Roadmap & Stunts</h3>
+            <div className="mt-6 grid md:grid-cols-3 gap-6">
+              <Card title="Phase 1" subtitle="Launch & Herd">
+                Launch token, socials, first meme contest, liquidity proof.
+              </Card>
+              <Card title="Phase 2" subtitle="Verify & Build Trust">
+                Get verified, publish audit summary, early merch drop.
+              </Card>
+              <Card title="Phase 3" subtitle="Lore & IRL Stunts">
+                Herd Hunts, pop-up buffalo posters, collab merch.
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Community */}
         <section id="community" className="container mx-auto px-6 py-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl font-bold">Community & Culture</h3>
-            <p className="mt-4 text-slate-700">BuffaloCoin is built around jokes, lore, and rituals. Think regular meme contests, "Herd Hunts" (treasure-hunt style social events), and weekly AMAs where devs and mememakers mingle with holders.</p>
+            <h3 className="text-2xl font-bold text-amber-100">Join the Herd & Get Weird</h3>
+            <p className="mt-4 text-amber-200">Memes, art, debate, and the occasional tasteful chaos. We reward creativity and attitude. Bring your horns (metaphorically).</p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href="#" className="px-4 py-2 border rounded-md">Join Discord</a>
-              <a href="#" className="px-4 py-2 border rounded-md">Follow Twitter</a>
-              <a href="#" className="px-4 py-2 border rounded-md">Telegram</a>
+              <a href="#" className="px-4 py-2 border border-amber-600 rounded-md">Discord</a>
+              <a href="#" className="px-4 py-2 border border-amber-600 rounded-md">X</a>
+              <a href="#" className="px-4 py-2 border border-amber-600 rounded-md">Telegram</a>
             </div>
           </div>
         </section>
 
-        <section id="buy" className="container mx-auto px-6 py-12 bg-amber-100">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl font-bold">Ready to Join the Herd?</h3>
-            <p className="mt-3 text-slate-700">When buying, always verify the contract address. Use trusted swap links published here and in our verified socials.</p>
+        {/* Buy CTA */}
+        <section id="buy" className="container mx-auto px-6 py-12 bg-gradient-to-b from-slate-800 to-slate-900">
+          <div className="max-w-3xl mx-auto text-center bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+            <h3 className="text-2xl font-bold text-amber-100">Ready to Join the Herd?</h3>
+            <p className="mt-3 text-amber-200">Always verify contract address before buying. Official contract shown below — do not trust copycats.</p>
 
             <div className="mt-6 flex justify-center gap-3">
-              <a href="#" className="px-6 py-3 bg-amber-700 text-white rounded-lg shadow">Swap on DEX</a>
-              <a href="#" className="px-6 py-3 border rounded-lg">Add to Wallet</a>
+              <a href="#" className="px-6 py-3 bg-amber-600 text-slate-900 rounded-lg font-semibold">Swap on DEX</a>
+              <a href="#" className="px-6 py-3 border border-amber-600 rounded-lg">Add to Wallet</a>
             </div>
 
-            <div className="mt-6 text-xs text-slate-600">Official contract: <code className="bg-white/60 px-2 py-1 rounded">{TOKEN.contractAddress}</code></div>
+            <div className="mt-4 text-xs text-amber-300">Official contract: <code className="bg-slate-900/40 px-2 py-1 rounded">{TOKEN.contractAddress}</code></div>
           </div>
         </section>
 
-        <footer className="mt-12 border-t bg-white/60">
-          <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between">
+        <footer className="mt-12 border-t border-slate-800 py-8">
+          <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden ring-1 ring-amber-200">
+              <div className="w-10 h-10 relative rounded-full overflow-hidden ring-1 ring-amber-600">
                 <Image src="/logo.png" alt="logo" fill style={{objectFit:'cover'}} sizes="40px"/>
               </div>
               <div>
                 <div className="font-bold">BuffaloCoin</div>
-                <div className="text-xs text-slate-600">Proudly memetic • Community-first</div>
+                <div className="text-sm text-amber-300">Wild west vibes • Not financial advice</div>
               </div>
             </div>
 
-            <div className="mt-4 md:mt-0 text-sm text-slate-600">
-              © {new Date().getFullYear()} BuffaloCoin — Not financial advice. Verify everything.
-            </div>
+            <div className="text-sm text-amber-300">© {new Date().getFullYear()} BuffaloCoin — verify everything.</div>
           </div>
         </footer>
       </main>
@@ -195,24 +221,22 @@ export default function Home() {
   );
 }
 
-function Stat({ label, value }){
+function SmallStat({ label, value }){
   return (
-    <div className="bg-white p-3 rounded-lg shadow-sm">
-      <div className="text-xs text-slate-500">{label}</div>
+    <div className="bg-slate-900/50 p-3 rounded-lg">
+      <div className="text-xs text-amber-300">{label}</div>
       <div className="font-bold mt-1">{value}</div>
     </div>
   );
 }
 
-function RoadItem({ step, title, desc }){
+function Card({ title, subtitle, children }){
   return (
-    <li className="bg-white p-4 rounded-lg shadow-sm flex gap-4 items-start">
-      <div className="flex-none w-24 text-amber-700 font-bold">{step}</div>
-      <div>
-        <div className="font-semibold">{title}</div>
-        <div className="text-sm text-slate-600">{desc}</div>
-      </div>
-    </li>
+    <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
+      <div className="font-semibold text-amber-200">{title}</div>
+      <div className="text-xs text-amber-300 mb-2">{subtitle}</div>
+      <div className="text-sm text-amber-200">{children}</div>
+    </div>
   );
 }
 
