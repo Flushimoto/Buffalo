@@ -58,7 +58,7 @@ export default function Home() {
           id="home"
           className="w-full"
           style={{
-            backgroundImage: `url('/hero.jpg')`,
+            backgroundImage: `url('/hero1.png')`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
